@@ -41,4 +41,26 @@
 		public function getName() {
 			return $this->name;
 		}
+
+		public function compare(ObservationInterface $other = null, callable $comparator = null) {
+			if (!($other instanceof ObservationInterface))
+				return false;
+
+			$equal = false;
+			$neitherEx = !$this->hasException() && !$other->hasException();
+			$bothEx = $this->hasException() && $other->hasException();
+
+			if ($neitherEx) {
+				if ($comparator !== null)
+					$equal = call_user_func($comparator, $this->getResult(), $other->getResult());
+				else
+					$equal = $this->getResult() == $other->getResult();
+			}
+
+			$equalEx = $bothEx &&
+				get_class($this->getException()) === get_class($other->getException()) &&
+				$this->getException()->getMessage() === $other->getException()->getMessage();
+
+			return ($neitherEx && $equal) || ($bothEx && $equalEx);
+		}
 	}
