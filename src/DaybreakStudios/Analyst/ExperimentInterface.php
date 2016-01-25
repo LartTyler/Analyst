@@ -49,6 +49,11 @@
 		public function getName();
 
 		/**
+		 * @return callable[]
+		 */
+		public function getBehaviors();
+
+		/**
 		 * @param callable $control
 		 *
 		 * @return $this

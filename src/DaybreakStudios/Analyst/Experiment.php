@@ -56,6 +56,10 @@
 			return $this->throwOnMismatch;
 		}
 
+		public function getBehaviors() {
+			return $this->behaviors;
+		}
+
 		public function control(callable $control) {
 			return $this->candidate($control, 'control');
 		}
@@ -115,7 +119,7 @@
 			return $control->getResult();
 		}
 
-		public static function create() {
-			return new static();
+		public static function create($name = 'experiment') {
+			return new static($name);
 		}
 	}
