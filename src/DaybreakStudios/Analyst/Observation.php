@@ -19,7 +19,7 @@
 				$this->exception = $e;
 			}
 
-			$this->duration = (microtime(true) - $start) * 1000;
+			$this->duration = microtime(true) - $start;
 		}
 
 		public function hasException() {

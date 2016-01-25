@@ -13,7 +13,7 @@
 		public function getException();
 
 		/**
-		 * @return float
+		 * @return float the number of seconds the behavior took to execute
 		 */
 		public function getDuration();
 
