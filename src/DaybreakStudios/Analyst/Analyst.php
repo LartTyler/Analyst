@@ -8,6 +8,7 @@
 		private $name;
 
 		private $behaviors = [];
+		private $context = null;
 
 		/**
 		 * Analyst constructor.
@@ -16,6 +17,12 @@
 		 */
 		public function __construct($name = 'experiment') {
 			$this->name = $name;
+		}
+
+		public function setContext(array $context) {
+			$this->context = $context;
+
+			return $this;
 		}
 
 		public function control(callable $control) {
@@ -46,12 +53,12 @@
 			$control = $this->behaviors[$name];
 
 			if (sizeof($this->behaviors) === 1 || !$this->isEnabled())
-				return call_user_func($control);
+				return call_user_func_array($control, $this->context ?: []);
 
 			$observations = [];
 
 			foreach (ArrayUtil::shuffle($this->behaviors) as $name => $behavior)
-				$observations[] = new Observation($name, $behavior);
+				$observations[] = new Observation($name, $behavior, $this->context);
 		}
 
 		public static function create() {
