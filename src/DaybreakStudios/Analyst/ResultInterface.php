@@ -30,4 +30,9 @@
 		 * @return ObservationInterface[]
 		 */
 		public function getMismatches();
+
+		/**
+		 * @return bool
+		 */
+		public function isMatching();
 	}

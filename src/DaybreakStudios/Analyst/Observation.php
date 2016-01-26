@@ -54,7 +54,7 @@
 				if ($comparator !== null)
 					$equal = call_user_func($comparator, $this->getResult(), $other->getResult());
 				else
-					$equal = $this->getResult() == $other->getResult();
+					$equal = $this->getResult() === $other->getResult();
 			}
 
 			$equalEx = $bothEx &&

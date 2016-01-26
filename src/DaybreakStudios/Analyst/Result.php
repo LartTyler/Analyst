@@ -20,7 +20,7 @@
 		/**
 		 * @var ObservationInterface[]
 		 */
-		private $mismatched;
+		private $mismatched = [];
 
 		/**
 		 * @var ObservationInterface[]
@@ -28,7 +28,7 @@
 		private $observations;
 
 		public function __construct(
-			ExperimentInterface $experiment, ObservationInterface $control, array $observations = null
+			ExperimentInterface $experiment, ObservationInterface $control, array $observations
 		) {
 			$this->experiment = $experiment;
 			$this->observations = $observations;
@@ -63,9 +63,13 @@
 			return $this->mismatched;
 		}
 
+		public function isMatching() {
+			return sizeof($this->getMismatches()) === 0;
+		}
+
 		protected function evaluate() {
 			foreach ($this->candidates as $candidate)
-				if ($this->control->getResult() !== $candidate->getResult())
+				if (!$this->getExperiment()->compare($this->control, $candidate))
 					$this->mismatched[] = $candidate;
 		}
 	}
