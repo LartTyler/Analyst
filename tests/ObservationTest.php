@@ -76,9 +76,9 @@
 				return '1';
 			});
 
-			$this->assertTrue($a->compare($b));
-			$this->assertFalse($a->compare($b, function($a, $b) {
-				return $a === $b;
+			$this->assertFalse($a->compare($b));
+			$this->assertTrue($a->compare($b, function($a, $b) {
+				return $a == $b;
 			}));
 		}
 	}
