@@ -7,6 +7,7 @@
 			"email": "overlordcodemonkey@live.com"
 		}
 	],
+	"license": "MIT",
 	"type": "library",
 	"require": {
 		"php": ">= 5.4"
