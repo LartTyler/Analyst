@@ -58,7 +58,7 @@
 		 * @depends testExperimentRespectsContext
 		 */
 		public function testExperimentRespectsCustomComparator(ExperimentInterface $experiment) {
-			$comparator = function(ObservationInterface $a, ObservationInterface $b) {
+			$comparator = function($a, $b) {
 				return $a == $b;
 			};
 
