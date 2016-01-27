@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/LartTyler/Analyst.svg?branch=master)](https://travis-ci.org/LartTyler/Analyst)
+[![Coverage Status](https://coveralls.io/repos/github/LartTyler/Analyst/badge.svg?branch=master)](https://coveralls.io/github/LartTyler/Analyst?branch=master)
 
 # Analyst
 A PHP feature testing library inspired by GitHub's Scientist.
