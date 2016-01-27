@@ -15,4 +15,10 @@
     <logging>
         <log type="coverage-clover" target="build/logs/clover.xml" />
     </logging>
+
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./src/DaybreakStudios/Analyst/</directory>
+        </whitelist>
+    </filter>
 </phpunit>
