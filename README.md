@@ -6,7 +6,7 @@ A PHP feature testing library inspired by GitHub's Scientist.
 $ composer require dbstudios/analyst
 ```
 
-# How do I analyse?
+# How do I analyze?
 Let's pretend that you have a large web application, and are in the process of changing the way you verify user
 permissions when accessing a page.
 
