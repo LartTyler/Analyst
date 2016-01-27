@@ -14,17 +14,17 @@ permissions when accessing a page.
 
 ```php
 class MyController {
-    public function isAllowed(User $user, $page) {
+    public function isAllowed(User $user, $slug) {
         return Experiment::create('user-allowed')
             ->setContext([
                 'user' => $user, // context ignores keys, however it's helpful to use keys to "flag" what each variable means
-                'page' => $page,
+                'slug' => $slug,
             ])
-            ->control(function(User $user, $page) {
-                return $user->isAdmin() || $user->getPermissions()->contains('access.' . $page);
+            ->control(function(User $user, $slug) {
+                return $user->isAdmin() || $user->getPermissions()->contains('view.page.' . $slug);
             })
-            ->candidate(function(User $user, $page) {
-                return $user->getPermissionProvider()->isAccessAllowed($page);
+            ->candidate(function(User $user, $slug) {
+                return $user->getPermissionProvider()->isAccessAllowed($slug);
             })
             ->run();
     }
@@ -85,7 +85,7 @@ like this.
 
 ```php
 class MyController {
-    public function isAllowed(User $user, $page) {
+    public function isAllowed(User $user, $slug) {
         return MyExperiment::create($this->getConnection(), 'user-allowed')
             // set up context, control, and candidate...
             ->run();
