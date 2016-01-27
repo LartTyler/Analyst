@@ -1,6 +1,10 @@
 [![Build Status](https://travis-ci.org/LartTyler/Analyst.svg?branch=master)](https://travis-ci.org/LartTyler/Analyst)
 [![Coverage Status](https://coveralls.io/repos/github/LartTyler/Analyst/badge.svg?branch=master)](https://coveralls.io/github/LartTyler/Analyst?branch=master)
 
+[![Latest Stable Version](https://poser.pugx.org/dbstudios/analyst/v/stable)](https://packagist.org/packages/dbstudios/analyst)
+[![Total Downloads](https://poser.pugx.org/dbstudios/analyst/downloads)](https://packagist.org/packages/dbstudios/analyst)
+[![License](https://poser.pugx.org/dbstudios/analyst/license)](https://packagist.org/packages/dbstudios/analyst)
+
 # Analyst
 A PHP feature testing library inspired by GitHub's Scientist.
 
