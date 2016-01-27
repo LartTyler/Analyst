@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/LartTyler/Analyst.svg?branch=master)](https://travis-ci.org/LartTyler/Analyst)
+
 # Analyst
 A PHP feature testing library inspired by GitHub's Scientist.
 
