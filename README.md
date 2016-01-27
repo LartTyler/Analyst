@@ -1,6 +1,8 @@
 # Analyst
 A PHP feature testing library inspired by GitHub's Scientist.
 
+Please be aware, this README is a work in progress, and may contain incomplete information.
+
 # Installation
 ```shell
 $ composer require dbstudios/analyst
