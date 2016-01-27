@@ -6,4 +6,4 @@ install:
     - composer install
 
 after_success:
-    - php vendor/bin/coveralls
+    - php vendor/bin/coveralls -v
