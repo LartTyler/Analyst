@@ -4,6 +4,7 @@ php:
 
 install:
     - composer install
+    - mkdir -p build/logs
 
 after_success:
-    - php vendor/bin/coveralls -v
+    - php vendor/bin/coveralls
