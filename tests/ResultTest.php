@@ -41,6 +41,36 @@
 			$this->assertTrue($result->isMatching());
 		}
 
+		public function testResultPartitionsCandidates() {
+			$a = new Observation('test-a', function() { return 1; });
+			$b = new Observation('test-b', function() { return 2; });
+			$c = new Observation('test-c', function() { return 1; });
+
+			$result = new Result(self::$experiment, $a, [ $a, $b, $c ]);
+
+			$this->assertTrue($this->containsAll([ $b, $c ], $result->getCandidates()));
+		}
+
+		public function testResultPartitionsControl() {
+			$a = new Observation('test-a', function() { return 1; });
+			$b = new Observation('test-b', function() { return 2; });
+			$c = new Observation('test-c', function() { return 1; });
+
+			$result = new Result(self::$experiment, $a, [ $a, $b, $c ]);
+
+			$this->assertEquals($a, $result->getControl());
+		}
+
+		public function testResultGroupsAllObservations() {
+			$a = new Observation('test-a', function() { return 1; });
+			$b = new Observation('test-b', function() { return 2; });
+			$c = new Observation('test-c', function() { return 1; });
+
+			$result = new Result(self::$experiment, $a, [ $a, $b, $c ]);
+
+			$this->assertTrue($this->containsAll([ $a, $b, $c ], $result->getObservations()));
+		}
+
 		public function testResultPartitionsMismatchingObservations() {
 			$a = new Observation('test-a', function() { return 1; });
 			$b = new Observation('test-b', function() { return 1; });
@@ -49,5 +79,18 @@
 			$result = new Result(self::$experiment, $a, [ $a, $b, $c ]);
 
 			$this->assertEquals([ $c ], $result->getMismatches());
+		}
+
+		private function containsAll($array, $compare) {
+			$array = array_unique($array, SORT_REGULAR);
+
+			if (sizeof($array) !== sizeof($compare))
+				return false;
+
+			foreach ($array as $e)
+				if (!in_array($e, $compare))
+					return false;
+
+			return true;
 		}
 	}

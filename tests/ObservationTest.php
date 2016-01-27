@@ -6,6 +6,12 @@
 	use PHPUnit_Framework_TestCase;
 
 	class ObservationTest extends PHPUnit_Framework_TestCase {
+		public function testObservationKnowsItsName() {
+			$ob = new Observation('test-observation', function() { return 0; });
+
+			$this->assertEquals('test-observation', $ob->getName());
+		}
+
 		public function testObservationExecutesAndRecordsBlock() {
 			$ob = new Observation('test', function() {
 				usleep(100000);
