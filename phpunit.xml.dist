@@ -19,6 +19,10 @@
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">./src/DaybreakStudios/Analyst/</directory>
+
+            <exclude>
+                <directory suffix=".php">./src/DaybreakStudios/Analyst/Exception/</directory>
+            </exclude>
         </whitelist>
     </filter>
 </phpunit>
